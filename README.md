@@ -42,6 +42,7 @@ Our baseline model currently uses 2 feature predictors, `minutes` and `calories`
 
 We **do not** believe our current model is good because it always predicts a 5-star rating for each recipe. This is because there is a substantially larger amount of 5-star recipes than every other recipe. The F-1 Score calculated for the test data of this model is 0.699, which is very bad. This is probably due to the huge imbalance in 1-star, 2-star, 3-star, 4-star, and 5-star reviews. Below we have the confusion matrix showing the number of actual positive and predicted positive values.
 
+<iframe src="assets/confusion_matrix_basic.html" width=800 height=600 frameBorder=0></iframe>
 
 ## Final Model
 
@@ -60,6 +61,8 @@ Although Decision Classifiers are known to overfit data, we have used GridSearch
 Through our implementation of GridSearchCV, we meticulously optimized the hyperparameters, specifically max_depth and criterion, in our Decision Tree Classifier. This strategic fine-tuning aimed to discover the most effective parameter combination that enhances the classifier's ability to generalize well to previously unseen data (test data). The best hyperparameters we found were **max_depth** = 3, and **criterion** = 'gini'.
 
 **-Performance**
+
+<iframe src="assets/confusion_matrix_final.html" width=800 height=600 frameBorder=0></iframe>
 
 ## Fairness Model
 
