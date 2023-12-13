@@ -22,7 +22,7 @@ Our response variable is `rating`. Rating is a quantitative discrete and a categ
 
 **-Metrics**
 
-The most suitable metric for predicting ratings would be F-1 Score. This is because our dataset inbalanced as there are a lot more higher ratings than lower ratings. Additionally, we want to limit false positives and negatives. Recipes should have equal value ratings as low-rating recipes may not be cooked and overly high-rated recipes may get overly critiqued. We are prioritizing avoiding overrating (false positives) and underrating (false negatives) recipes, especially since user satisfaction is our primary concern. This means both high recall and high precision is necessary and the F-1 score is a great estimator of both.
+The most suitable metric for predicting ratings would be F-1 Score. This is because our dataset is inbalanced as there are a lot more higher ratings than lower ratings. Additionally, we want to limit false positives and negatives. Recipes should have equal value ratings as low-rating recipes may not be cooked and overly high-rated recipes may get overly critiqued. We are prioritizing avoiding overrating (false positives) and underrating (false negatives) recipes, especially since user satisfaction is our primary concern. This means both high recall and high precision is necessary and the F-1 score is a great estimator of both.
 
 **Information Known**
 
@@ -40,7 +40,7 @@ Our baseline model currently uses 2 feature predictors, `minutes` and `calories`
 
 **-Performance**
 
-We **do not** believe our current model is good because it always predicts a higher rating for recipes. 
+We **do not** believe our current model is good because it always predicts a 5-star rating for each recipe. This is because there is a substantially larger amount of 5-star recipes than every other recipe. The F-1 Score calculated for the test data of this model is 0.699, which is very bad. This is probably due to the huge imbalance in 1-star, 2-star, 3-star, 4-star, and 5-star reviews. Below we have the confusion matrix showing the number of actual positive and predicted positive values.
 
 
 ## Final Model
