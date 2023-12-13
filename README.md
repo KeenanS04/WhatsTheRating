@@ -64,7 +64,7 @@ Through our implementation of GridSearchCV, we meticulously optimized the hyperp
 ## Fairness Model
 
 **Description**
-Our group asks the question, “Does our final model perform better for recipes of low ratings (1,2) than it does for higher ratings (3,4,5)? To simulate this, we will be applying a permutation test where we shuffle both groups x and y. Our evaluation metric will be precision because we want to learn more about how our model identifies and classifies low and high-rated recipes, providing a nuanced understanding of its discriminatory performance across different rating categories.
+Our group asks the question, “Does our final model perform better for recipes of low ratings (1,2) than it does for higher ratings (3,4,5)? To simulate this, we will be applying a permutation test where we shuffle both groups x and y. Our evaluation metric will be an F-1 Score because we want to learn more about how our model identifies, classifies, overrates, and underrates low and high-rated recipes, providing a nuanced understanding of its performance across different rating categories.
 
 **Null Hypothesis** Our model is fair. Its precision for low ratings and high ratings are roughly the same, and any differences are due to random chance.
 
@@ -77,7 +77,7 @@ Our group asks the question, “Does our final model perform better for recipes 
 **P-value** 0.0
 
 **Conclusion** 
-Upon examining our distribution and the test statistic, we got a p-value of 0.0. Since the p-value of 0.0 is less than 0.05, our significance level, we **reject** the null hypothesis, and conclude that our model precision for low ratings is lower than it is for higher ratings. This permutation test turns out to be statistically significant **presumes that our model isn't fair** and **slightly biased** towards higher ratings. However, this is **not a 100% guarantee** that our model is biased, and this test **does not mean an absolute conclusion**. 
+Upon examining our distribution and the test statistic, we got a p-value of 0.0. Since the p-value of 0.0 is less than 0.05, our significance level, we **reject** the null hypothesis, and conclude that our model F-1 score for low ratings is lower than it is for higher ratings. This permutation test turns out to be statistically significant **presumes that our model isn't fair** and **slightly biased** towards higher ratings. However, this is **not a 100% guarantee** that our model is biased, and this test **does not mean an absolute conclusion**. 
 
 Overall, this test does confirm our initial thoughts that the model could be biased, given the significant prevalence of outcomes favoring the higher ratings of 3,4, and 5, coupled with a lesser preference for the lower ratings of 1 and 2. Remarkably, the test statistic exhibited a pronounced skew towards the extreme, nearly overshadowing the overall distribution. This might be because there are not a lot of recipes with low ratings as food.com probably filters out lower rating recipes as it is not a good recipe to put on their site.
 
