@@ -24,17 +24,17 @@ Our response variable is **rating**. Rating is a quantitative discrete and a cat
 
 **Information Known**
 
-At the time of prediction, minutes (quantitative continuous), number of ingredients (quantitative discrete), nutritional values (quantitative continuous), and number of steps (quantitative discrete) are the information we know. Each recipe would have needed to be cooked and tasted before someone could submit a rating. This means that the ingredients used, the nutritional values of those ingredients used, the cooking time, and the number of steps it took to prepare the food would all be known at the time of prediction. 
+At the time of prediction, `minutes` (quantitative continuous), `number of ingredients` (quantitative discrete), `nutritional values` (quantitative continuous), and `number of steps` (quantitative discrete) are the information we know. Each recipe would have needed to be cooked and tasted before someone could submit a rating. This means that the ingredients used, the nutritional values of those ingredients used, the cooking time, and the number of steps it took to prepare the food would all be known at the time of prediction. 
 
 ## Baseline Model
 
 **-Description** 
 
-Our baseline model currently uses 2 feature predictors, **minutes** (quantitative continuous) and **calories** (quantitative continuous). We will use these two features to predict **ratings** (categorical discrete) in our Decision Tree Classification model.  
+Our baseline model currently uses 2 feature predictors, `**minutes**` (quantitative continuous) and `**calories**` (quantitative continuous). We will use these two features to predict `**ratings**` (categorical discrete) in our Decision Tree Classification model.  
 
 **-Features**
 
-Our baseline model currently uses 2 feature predictors, **minutes** and **calories**. Both of these features are quantitative continuous and are not categorical, so there was no need to apply one hot encoding, ordinal encoding, or any other type of feature engineering to the model. By maintaining the raw, unaltered values of calories and minutes, we intentionally preserved the simplicity of our model. This deliberate choice allowed us to gain valuable insights into the classifier's performance in predicting ratings solely based on these fundamental elements, providing a clear and unadulterated perspective on the interplay between cooking time, nutritional content, and recipe ratings.
+Our baseline model currently uses 2 feature predictors, `**minutes**` and `**calories**`. Both of these features are quantitative continuous and are not categorical, so there was no need to apply one hot encoding, ordinal encoding, or any other type of feature engineering to the model. By maintaining the raw, unaltered values of calories and minutes, we intentionally preserved the simplicity of our model. This deliberate choice allowed us to gain valuable insights into the classifier's performance in predicting ratings solely based on these fundamental elements, providing a clear and unadulterated perspective on the interplay between cooking time, nutritional content, and recipe ratings.
 
 **-Performance**
 
