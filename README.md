@@ -49,7 +49,13 @@ We **do not** believe our current model is good because it always predicts a hig
 
 **-Modeling Algoroithm**
 
+After trying multiple classifiers such as KNNclassifier, RandomForestClassifier, and Naive Bayes, we chose to use a Decision Classifier. We chose to use a Decision Classifier due to its interpretability, robustness against outliers and irrelevant values (which this dataset has, shown in the EDA), and its quickness in fitting and predicting a model. 
+
+Although Decision Classifiers are known to overfit data, we have used GridSearchCV to find the best possible hyperparameters to maximize our test set. We also made sure to stop splitting after a certain depth (mentioned more in the hyperparameters) to avoid overfitting and to limit the high variance that Decision Classifiers can be known to achieve.
+
 **-Hyperparameters**
+
+Through our implementation of GridSearchCV, we meticulously optimized the hyperparameters, specifically max_depth and criterion, in our Decision Tree Classifier. This strategic fine-tuning aimed to discover the most effective parameter combination that enhances the classifier's ability to generalize well to previously unseen data (test data). The best hyperparameters we found were **max_depth** = 3, and **criterion** = 'gini'.
 
 **-Performance**
 
