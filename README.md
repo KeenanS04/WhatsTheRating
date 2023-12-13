@@ -40,9 +40,14 @@ Our baseline model currently uses 2 feature predictors, `minutes` and `calories`
 
 **-Performance**
 
-We **do not** believe our current model is good because it always predicts a 5-star rating for each recipe. This is because there is a substantially larger amount of 5-star recipes than every other recipe. The F-1 Score calculated for the test data of this model is 0.699, which is very bad. This is probably due to the huge imbalance in 1-star, 2-star, 3-star, 4-star, and 5-star reviews. Below we have the confusion matrix showing the number of actual positive and predicted positive values.
+We **do not** believe our current model is good because it does not accurately predict the true rating for a recipe. This is because there is a substantially larger amount of 5-star recipes than every other recipe. The F-1 Score calculated for the test data of this model is 0.699, which can be greatly improved. This is probably due to the huge imbalance in 1-star, 2-star, 3-star, 4-star, and 5-star reviews. Below we have the confusion matrix showing the number of actual positive and predicted positive values.
 
 <iframe src="assets/confusion_matrix_basic.png" width=800 height=600 frameBorder=0></iframe>
+
+As you can see from this confusion matrix, it predicts the 5-star rating pretty accurately, but for every other rating, it tends to overpredict their rating. The trend from left to right on the matrix is that it increases meaning that our model overrates the ratings in our data. In conclusion, this is not ideal for our Decision Tree classifier.
+
+To fix our overfitting of 5-star recipes, we could sample more of the lower-rated recipes. We also can fix the hyperparameters for the Decision tree. Currently, we are using the base parameters, and no max_depth is being used. This could mean that full trees are being made which tends to overfit the model and increase variance. The changes we make can be seen in the next section of this page!
+
 
 ## Final Model
 
