@@ -10,27 +10,35 @@ Exploratory data analysis on this data can be found [here](https://keenans04.git
 
 **-Prediction Problem** 
 
-Using the Recipes and Ratings dataset, we will create a model that predicts the rating of a recipe. Using our exploratory data analysis from our previous report, we determined that the **minutes** that it takes to cook a recipe and the number of ingredients **(n_ingredients)** in a recipe contribute to the rating of a recipe. We will examine this correlation further and determine its effectiveness with the indicators below.
+Using the Recipes and Ratings dataset, we will create a model that predicts the rating of a recipe. Using our exploratory data analysis from our previous report, we determined that the **minutes** that it takes to cook a recipe and the **calories** of a recipe contribute to the **rating** of a recipe. We will examine this correlation further and determine its effectiveness with the indicators below.
 
 **-Classification or Regression?**
 
-The model we are creating is a multiclass classification model because there are only 5 labels that can be classified. This is a classification model since we are trying to predict the correct label **(rating)** given the inputs of **minutes** and **n_ingredients**. Also, binary classification can not be applied in this scenario because we have more than 2 labels.
+The model we are creating is a multiclass classification model because there are only 5 labels that can be classified. This is a classification model since we are trying to predict the correct label **(rating)** given the inputs of **minutes** and **calories**. Also, binary classification can not be applied in this scenario because we have more than 2 labels.
 
 **-Response Variable**
 
-Our response variable is **rating**. Rating is a quantitative and discrete variable with values of 1,2,3,4, and 5. Discrete quantitative variables are easier to classify as they can not have a decimal value, thus making it easier to predict a label for.
+Our response variable is **rating**. Rating is a quantitative discrete and a categorical ordinal variable with values of 1,2,3,4, and 5. Discrete quantitative variables are easier to classify as they can not have a decimal value, thus making it easier to predict a label. Regression can not be used on categorical data.
 
 **-Metrics**
 
 **Information Known**
 
+At the time of prediction, minutes (quantitative continuous), number of ingredients (quantitative discrete), nutritional values (quantitative continuous), and number of steps (quantitative discrete) are the information we know. Each recipe would have needed to be cooked and tasted before someone could submit a rating. This means that the ingredients used, the nutritional values of those ingredients used, the cooking time, and the number of steps it took to prepare the food would all be known at the time of prediction. 
+
 ## Baseline Model
 
 **-Description** 
 
+Our baseline model currently uses 2 feature predictors, **minutes** (quantitative continuous) and **calories** (quantitative continuous). We will use these two features to predict **ratings** (categorical discrete) in our Decision Tree Classification model.  
+
 **-Features**
 
+Our baseline model currently uses 2 feature predictors, **minutes** and **calories**. Both of these features are quantitative continuous and are not categorical, so there was no need to apply one hot encoding, ordinal encoding, or any other type of feature engineering to the model. By maintaining the raw, unaltered values of calories and minutes, we intentionally preserved the simplicity of our model. This deliberate choice allowed us to gain valuable insights into the classifier's performance in predicting ratings solely based on these fundamental elements, providing a clear and unadulterated perspective on the interplay between cooking time, nutritional content, and recipe ratings.
+
 **-Performance**
+
+We **do not** believe our current model is good because it always predicts a higher rating for recipes. 
 
 
 ## Final Model
@@ -61,7 +69,7 @@ Our group asks the question, “Does our final model perform better for recipes 
 **P-value** 0.0
 
 **Conclusion** 
-Upon examining our distribution and the test statistic, we got a p-value of 0.0. Since the p-value of 0.0 is less than 0.05, our significance level, we **reject** the null hypothesis, and conclude that our model precision for low ratings is lower than it is for higher ratings. This permutation test turns out to be statistically significant **presumes that our model isn't fair** and **slightly biased** towards higher ratings. However, this is **not a 100% guarantee** that our model is biased and this test **does not mean an absolute conclusion**. 
+Upon examining our distribution and the test statistic, we got a p-value of 0.0. Since the p-value of 0.0 is less than 0.05, our significance level, we **reject** the null hypothesis, and conclude that our model precision for low ratings is lower than it is for higher ratings. This permutation test turns out to be statistically significant **presumes that our model isn't fair** and **slightly biased** towards higher ratings. However, this is **not a 100% guarantee** that our model is biased, and this test **does not mean an absolute conclusion**. 
 
 Overall, this test does confirm our initial thoughts that the model could be biased, given the significant prevalence of outcomes favoring the higher ratings of 3,4, and 5, coupled with a lesser preference for the lower ratings of 1 and 2. Remarkably, the test statistic exhibited a pronounced skew towards the extreme, nearly overshadowing the overall distribution. This might be because there are not a lot of recipes with low ratings as food.com probably filters out lower rating recipes as it is not a good recipe to put on their site.
 
