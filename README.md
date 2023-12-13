@@ -10,17 +10,19 @@ Exploratory data analysis on this data can be found [here](https://keenans04.git
 
 **-Prediction Problem** 
 
-Using the Recipes and Ratings dataset, we will create a model that predicts the rating of a recipe. Using our exploratory data analysis from our previous report, we determined that the **minutes** that it takes to cook a recipe and the **calories** of a recipe contribute to the **rating** of a recipe. We will examine this correlation further and determine its effectiveness with the indicators below.
+Using the Recipes and Ratings dataset, we will create a model that predicts the rating of a recipe. Using our exploratory data analysis from our previous report, we determined that the `minutes` that it takes to cook a recipe and the `calories` of a recipe contribute to the `rating` of a recipe. We will examine this correlation further and determine its effectiveness with the indicators below.
 
 **-Classification or Regression?**
 
-The model we are creating is a multiclass classification model because there are only 5 labels that can be classified. This is a classification model since we are trying to predict the correct label **(rating)** given the inputs of **minutes** and **calories**. Also, binary classification can not be applied in this scenario because we have more than 2 labels.
+The model we are creating is a multiclass classification model because there are only 5 labels that can be classified. This is a classification model since we are trying to predict the correct label `(rating)` given the inputs of `minutes` and `calories`. Also, binary classification can not be applied in this scenario because we have more than 2 labels.
 
 **-Response Variable**
 
-Our response variable is **rating**. Rating is a quantitative discrete and a categorical ordinal variable with values of 1,2,3,4, and 5. Discrete quantitative variables are easier to classify as they can not have a decimal value, thus making it easier to predict a label. Regression can not be used on categorical data.
+Our response variable is `rating`. Rating is a quantitative discrete and a categorical ordinal variable with values of 1,2,3,4, and 5. Discrete quantitative variables are easier to classify as they can not have a decimal value, thus making it easier to predict a label. Regression can not be used on categorical data.
 
 **-Metrics**
+
+The most suitable metric for predicting ratings would be F-1 Score. This is because our dataset inbalanced as there are a lot more higher ratings than lower ratings. Additionally, we want to limit false positives and negatives. Recipes should have equal value ratings as low-rating recipes may not be cooked and overly high-rated recipes may get overly critiqued. We are prioritizing avoiding overrating (false positives) and underrating (false negatives) recipes, especially since user satisfaction is our primary concern. This means both high recall and high precision is necessary and the F-1 score is a great estimator of both.
 
 **Information Known**
 
@@ -30,11 +32,11 @@ At the time of prediction, `minutes` (quantitative continuous), `number of ingre
 
 **-Description** 
 
-Our baseline model currently uses 2 feature predictors, `**minutes**` (quantitative continuous) and `**calories**` (quantitative continuous). We will use these two features to predict `**ratings**` (categorical discrete) in our Decision Tree Classification model.  
+Our baseline model currently uses 2 feature predictors, `minutes` (quantitative continuous) and `calories` (quantitative continuous). We will use these two features to predict `ratings` (categorical discrete) in our Decision Tree Classification model.  
 
 **-Features**
 
-Our baseline model currently uses 2 feature predictors, `**minutes**` and `**calories**`. Both of these features are quantitative continuous and are not categorical, so there was no need to apply one hot encoding, ordinal encoding, or any other type of feature engineering to the model. By maintaining the raw, unaltered values of calories and minutes, we intentionally preserved the simplicity of our model. This deliberate choice allowed us to gain valuable insights into the classifier's performance in predicting ratings solely based on these fundamental elements, providing a clear and unadulterated perspective on the interplay between cooking time, nutritional content, and recipe ratings.
+Our baseline model currently uses 2 feature predictors, `minutes` and `calories`. Both of these features are quantitative continuous and are not categorical, so there was no need to apply one hot encoding, ordinal encoding, or any other type of feature engineering to the model. By maintaining the raw, unaltered values of calories and minutes, we intentionally preserved the simplicity of our model. This deliberate choice allowed us to gain valuable insights into the classifier's performance in predicting ratings solely based on these fundamental elements, providing a clear and unadulterated perspective on the interplay between cooking time, nutritional content, and recipe ratings.
 
 **-Performance**
 
