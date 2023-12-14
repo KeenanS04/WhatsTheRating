@@ -100,6 +100,9 @@ Our group asks the question, “Does our final model perform better for recipes 
 **P-value**: 0.0
 
 ### Conclusion 
+
+<iframe src="assets/fairnessHist.html" width=800 height=600 frameBorder=0></iframe>
+
 Upon examining our distribution and the test statistic, we got a p-value of 0.0. Since the p-value of 0.0 is less than 0.05, our significance level, we **reject** the null hypothesis, and conclude that our model F-1 score for low ratings is lower than it is for higher ratings. This permutation test turns out to be statistically significant, and it gives us convincing evidence to think that **our model isn't fair** and **slightly biased** towards higher ratings. However, this is **not a 100% guarantee** that our model is biased, and this test **does not mean an absolute conclusion**. 
 
 Overall, this test does confirm our initial thoughts that the model could be biased, given the significant prevalence of outcomes favoring the higher ratings of 3,4, and 5, coupled with a lesser preference for the lower ratings of 1 and 2. Remarkably, the test statistic exhibited a pronounced skew towards the extreme, nearly overshadowing the overall distribution. This might be because there are not a lot of recipes with low ratings as food.com probably filters out lower rating recipes as it is not a good recipe to put on their site.
