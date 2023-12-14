@@ -101,7 +101,7 @@ Our group asks the question, “Does our final model perform better for recipes 
 
 ### Conclusion 
 
-<iframe src="assets/fairnessHist.html" width=800 height=600 frameBorder=0></iframe>
+<iframe src="assets/fairnessHist.html" width=800 height=400 frameBorder=0></iframe>
 
 Upon examining our distribution and the test statistic, we got a p-value of 0.0. Since the p-value of 0.0 is less than 0.05, our significance level, we **reject** the null hypothesis, and conclude that our model F-1 score for low ratings is lower than it is for higher ratings. This permutation test turns out to be statistically significant, and it gives us convincing evidence to think that **our model isn't fair** and **slightly biased** towards higher ratings. However, this is **not a 100% guarantee** that our model is biased, and this test **does not mean an absolute conclusion**. 
 
