@@ -53,7 +53,14 @@ To fix our overfitting of lower-star recipes, we could sample more of the lower-
 
 ### Features Added 
 
+* `health_score`: This column is engineered from the original nutrition column. It contains the weighted sum of `calories`, `total_fat`, `sugar`, `sodium`, `protein`, `saturated_fat`
+* *
+* `n_ingredients`:
+* `n_steps`:
+* `is_short`:
+* `is_long`:
 
+We added these features because they all have a 
 
 ### Description
 
@@ -67,7 +74,7 @@ Although RandomForestClassifiers are known to have a bias on the dominant class 
 
 ### Hyperparameters
 
-Through our implementation of GridSearchCV, we meticulously optimized the hyperparameters, specifically `max_depth`, `criterion`, and `n_estimators`, in our RandomForestClassifier. This strategic fine-tuning aimed to discover the most effective parameter combination that enhances the classifier's ability to generalize well to previously unseen data (test data). The best hyperparameters we found were **max_depth** = 10, and **criterion** = 'gini', and **n_estimators** = 300.
+Through our implementation of GridSearchCV, we meticulously optimized the hyperparameters, specifically `max_depth`, `criterion`, and `n_estimators`, in our RandomForestClassifier. This strategic fine-tuning aimed to discover the most effective parameter combination that enhances the classifier's ability to generalize well to previously unseen data (test data). The best hyperparameters we found were **max_depth** = 5, and **criterion** = 'gini', and **n_estimators** = 100.
 
 ### Performance
 
