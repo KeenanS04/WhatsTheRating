@@ -18,11 +18,11 @@ The model we are creating is a multiclass classification model because there are
 
 ### Response Variable
 
-Our response variable is `rating`. Rating is a quantitative discrete and a categorical ordinal variable with values of 1,2,3,4, and 5. Discrete quantitative variables are easier to classify as they can not have a decimal value, thus making it easier to predict a label. Regression can not be used on categorical data.
+Our response variable is `rating`. Rating is a quantitative discrete and a categorical ordinal variable with values of 1, 2, 3, 4, and 5. Discrete quantitative variables are easier to classify as they can not have a decimal value, thus making it easier to predict a label. Regression can not be used on categorical data.
 
 ### Metrics
 
-The most suitable metric for predicting ratings would be the F-1 Score. This is because our dataset is unbalanced as there are a lot higher ratings than lower ratings. Additionally, we want to limit false positives and negatives. Recipes should have equal value ratings as low-rating recipes may not be cooked and overly high-rated recipes may get overly critiqued. We are prioritizing avoiding overrating (false positives) and underrating (false negatives) recipes, especially since user satisfaction is our primary concern. This means both high recall and high precision is necessary and the F-1 score is a great estimator of both.
+The most suitable metric for predicting ratings would be the F-1 Score. This is because our dataset is unbalanced as there are a lot more higher ratings than lower ratings. Additionally, we want to limit false positives and negatives. Recipes should have equal value ratings as low-rating recipes may not be cooked and overly high-rated recipes may get overly critiqued. We are prioritizing avoiding overrating (false positives) and underrating (false negatives) recipes, especially since user satisfaction is our primary concern. This means both high recall and high precision is necessary and the F-1 score is a great estimator of both.
 
 ### Information Known
 
@@ -59,15 +59,15 @@ To fix our overfitting of lower-star recipes, we could sample more of the lower-
 
 Our final model is a DecisionTreeClassifier with 7 columns being transformed in some way or shape. The 7 columns being used are `minutes`, `n_steps`, `n_ingredients`, and we engineered `calories`, `health_score`, `is_short`, `is_long` from the `tags` and `nutrition` columns of the dataset. In total, we had 2 categorical columns, **is_short, is_long,** that we hot encoded to get a better numeric representation and 5 quantitative discrete/continuous variables that we standardized to not worry about scaling and units. Overall, our model reached 78% F-1 Score showing significant improvement from the basic model.  
 
-### Modeling Algoroithm
+### Modeling Algorithm
 
 After trying multiple classifiers such as KNNclassifier, RandomForestClassifier, and Naive Bayes, we chose to use a Decision Classifier. We chose to use a Decision Classifier due to its interpretability, robustness against outliers and irrelevant values (which this dataset has, shown in the EDA), and its quickness in fitting and predicting a model. 
 
 Although Decision Classifiers are known to overfit data, we have used GridSearchCV to find the best possible hyperparameters to maximize our test set. We also made sure to stop splitting after a certain depth (mentioned more in the hyperparameters) to avoid overfitting and to limit the high variance that Decision Classifiers can be known to achieve.
 
-Hyperparameters
+### Hyperparameters
 
-Through our implementation of GridSearchCV, we meticulously optimized the hyperparameters, specifically max_depth and criterion, in our Decision Tree Classifier. This strategic fine-tuning aimed to discover the most effective parameter combination that enhances the classifier's ability to generalize well to previously unseen data (test data). The best hyperparameters we found were **max_depth** = 3, and **criterion** = 'gini'.
+Through our implementation of GridSearchCV, we meticulously optimized the hyperparameters, specifically `max_depth` and `criterion`, in our Decision Tree Classifier. This strategic fine-tuning aimed to discover the most effective parameter combination that enhances the classifier's ability to generalize well to previously unseen data (test data). The best hyperparameters we found were **max_depth** = 3, and **criterion** = 'gini'.
 
 ### Performance
 
@@ -80,17 +80,17 @@ As you can see from the confusion matrix, there are a lot of zeroes and a column
 ## Fairness Model
 
 ### Description
-Our group asks the question, “Does our final model perform better for recipes of low ratings (1,2) than it does for higher ratings (3,4,5)? To simulate this, we will be applying a permutation test where we shuffle both groups x and y. Our evaluation metric will be an F-1 Score because we want to learn more about how our model identifies, classifies, overrates, and underrates low and high-rated recipes, providing a nuanced understanding of its performance across different rating categories.
+Our group asks the question, “Does our final model perform better for recipes of low ratings (1, 2) than it does for higher ratings (3, 4, 5)? To simulate this, we will be applying a permutation test where we shuffle both groups x and y. Our evaluation metric will be an F-1 Score because we want to learn more about how our model identifies, classifies, overrates, and underrates low and high-rated recipes, providing a nuanced understanding of its performance across different rating categories.
 
-**Null Hypothesis** Our model is fair. Its precision for low ratings and high ratings are roughly the same, and any differences are due to random chance.
+**Null Hypothesis**: Our model is fair. Its precision for low ratings and high ratings are roughly the same, and any differences are due to random chance.
 
-**Alternate Hypothesis** Our model is unfair. Its precision for low ratings is lower than for high ratings
+**Alternate Hypothesis**: Our model is unfair. Its precision for low ratings is lower than for high ratings
 
-**Test Statistic** Difference in F-1 score between high and low rated recipes
+**Test Statistic**: Difference in F-1 score between high and low rated recipes
 
-**Significance Level** 5% significance level
+**Significance Level**: 5% significance level
 
-**P-value** 0.0
+**P-value**: 0.0
 
 ### Conclusion 
 Upon examining our distribution and the test statistic, we got a p-value of 0.0. Since the p-value of 0.0 is less than 0.05, our significance level, we **reject** the null hypothesis, and conclude that our model F-1 score for low ratings is lower than it is for higher ratings. This permutation test turns out to be statistically significant, and it gives us convincing evidence to think that **our model isn't fair** and **slightly biased** towards higher ratings. However, this is **not a 100% guarantee** that our model is biased, and this test **does not mean an absolute conclusion**. 
