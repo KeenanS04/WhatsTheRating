@@ -1,4 +1,4 @@
-# WhatsTheRating
+# What's The Rating?
 
 ## Overview
 
