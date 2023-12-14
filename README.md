@@ -18,7 +18,7 @@ The model we are creating is a multiclass classification model because there are
 
 ### Response Variable
 
-Our response variable is `rating`. Rating is a quantitative discrete and a categorical ordinal variable with values of 1, 2, 3, 4, and 5. Discrete quantitative variables are easier to classify as they can not have a decimal value, thus making it easier to predict a label. Regression can not be used on categorical data.
+Our response variable is `rating`. Rating is a quantitative discrete and categorical ordinal variable with values of 1, 2, 3, 4, and 5. Discrete quantitative variables are easier to classify as they can not have a decimal value, thus making it easier to predict a label. Regression can not be used on categorical data.
 
 ### Metrics
 
@@ -57,17 +57,17 @@ To fix our overfitting of lower-star recipes, we could sample more of the lower-
 
 ### Description
 
-Our final model is a DecisionTreeClassifier with 7 columns being transformed in some way or shape. The 7 columns being used are `minutes`, `n_steps`, `n_ingredients`, and we engineered `calories`, `health_score`, `is_short`, `is_long` from the `tags` and `nutrition` columns of the dataset. In total, we had 2 categorical columns, **is_short, is_long,** that we hot encoded to get a better numeric representation and 5 quantitative discrete/continuous variables that we standardized to not worry about scaling and units. Overall, our model reached 78% F-1 Score showing significant improvement from the basic model.  
+Our final model is a RandomForestClassifier with 7 columns being transformed in some way or shape. The 7 columns being used are `minutes`, `n_steps`, `n_ingredients`, and we engineered `calories`, `health_score`, `is_short`, `is_long` from the `tags` and `nutrition` columns of the dataset. In total, we had 2 categorical columns, **is_short, is_long,** that we hot encoded to get a better numeric representation and 5 quantitative discrete/continuous variables that we standardized to not worry about scaling and units. Overall, our model reached 78% F-1 Score showing significant improvement from the basic model.  
 
 ### Modeling Algorithm
 
-After trying multiple classifiers such as KNNclassifier, RandomForestClassifier, and Naive Bayes, we chose to use a Decision Classifier. We chose to use a Decision Classifier due to its interpretability, robustness against outliers and irrelevant values (which this dataset has, shown in the EDA), and its quickness in fitting and predicting a model. 
+After trying multiple classifiers such as KNNclassifier, DecisionTreeClassifier, RandomForestClassifier, and Naive Bayes, we chose to use a RandomForestClassifier. We chose to use a RandomForestClassifier due to its interpretability, robustness against outliers and irrelevant values (which this dataset has, shown in the EDA), its quickness in fitting and predicting a model, and its ability to reduce overfitting. However, the biggest reason we switched from a DecisionTreeClassifier to a RandomForestClassifier, is that RandomForestClassifiers do a much better job against unbalanced datasets which the recipes and ratings dataset is. 
 
-Although Decision Classifiers are known to overfit data, we have used GridSearchCV to find the best possible hyperparameters to maximize our test set. We also made sure to stop splitting after a certain depth (mentioned more in the hyperparameters) to avoid overfitting and to limit the high variance that Decision Classifiers can be known to achieve.
+Although RandomForestClassifiers are known to have a bias on the dominant class and be less interpretable, we have used GridSearchCV to find the best possible hyperparameters to maximize our test set. We also made sure to properly tune our hyperparameters to avoid these negatives and to limit the bias and high variance that RandomForestClassifiers can be known to achieve.
 
 ### Hyperparameters
 
-Through our implementation of GridSearchCV, we meticulously optimized the hyperparameters, specifically `max_depth` and `criterion`, in our Decision Tree Classifier. This strategic fine-tuning aimed to discover the most effective parameter combination that enhances the classifier's ability to generalize well to previously unseen data (test data). The best hyperparameters we found were **max_depth** = 3, and **criterion** = 'gini'.
+Through our implementation of GridSearchCV, we meticulously optimized the hyperparameters, specifically `max_depth`, `criterion`, and `n_estimators`, in our RandomForestClassifier. This strategic fine-tuning aimed to discover the most effective parameter combination that enhances the classifier's ability to generalize well to previously unseen data (test data). The best hyperparameters we found were **max_depth** = 10, and **criterion** = 'gini', and **n_estimators** = 300.
 
 ### Performance
 
@@ -75,7 +75,7 @@ With all these changes, **our model's F-1 Score was significantly higher at 0.77
 
 <iframe src="assets/confusion_matrix_final.png" width=800 height=600 frameBorder=0></iframe>
 
-As you can see from the confusion matrix, there are a lot of zeroes and a column of numbers on the rightmost column. This is completely different from our basic model, as there were no zeroes previously. The improvements made were that the model had better recall, as it did not underrate any recipes. Contrary to that, the precision is slightly low, as every recipe was predicted to be 5 stars. Our unbalanced dataset certainly has some effect on this. Overall, the model does a much better job in both precision and recall of the test data than the basic model which shows improvement. The improvement in the F-1 Score shows an increase of 0.08 which is a great increase from our initial F-1 Score.
+As you can see from the confusion matrix, there are a lot of zeroes and a column of numbers on the rightmost column. This is completely different from our basic model, as there were no zeroes previously. The improvements made were that the model had better recall, as it did not underrate any recipes. Contrary to that, the precision is slightly low, as every recipe was predicted to be 5 stars. Our unbalanced dataset and RandomForestClassifiers' tendency to have a bias on the dominant class certainly have some effect on this. Overall, the model does a much better job in both precision and recall of the test data than the basic model which shows **major** improvement. The improvement in the F-1 Score shows an increase of 0.08 which is a great increase from our initial F-1 Score.
 
 ## Fairness Model
 
