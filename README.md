@@ -68,8 +68,14 @@ To fix our overfitting of lower-star recipes, we could sample more of the lower-
 * `is_long`: This column is engineered from the tags column in our original recipes dataset. The tag of **easy** was used to see which recipes were easy to make, had fewer steps, and fewer ingredients. We assigned boolean values for each recipe based on this tag.
   * Feature Type: Categorical
   * Column Transformation: One hot encoding to make the categorical variables understandable numerically. Also, one hot encoding helps our classifier determine the correlation between easy recipes and ratings.
+ 
+#### Rationale
 
-We added these features because they all correlate with ratings. Intuitively thinking about it, the amount of calories, sugars, fats, and other nutritional values determines the rating because the higher the amount of these values, the higher the rating. (more sugars calories the tastier it is)
+We added these features because they all have some sort of correlate with ratings. Intuitively thinking about it, the amount of `calories`, `sugars`, `fats`, and other nutritional values `(health_score)` determines the rating because the higher the amount of these values, the higher the rating. (The more `sugar`, `calories`, etc. the tastier it is) Additionally, the number of `steps` and `ingredients` contributes to the **rating** as people do not want long recipes or recipes that require a lot of ingredients. These values also contribute to the time and ease a recipe takes. The value of time, replicability, and quality greatly contribute to **ratings**. All of these analyses are explored in our previous project which you can find [here](https://keenans04.github.io/RecipesAndRatings/)!
+
+#### Improved Baseline Model Features
+
+For the baseline model, we only had two features: `calories` and `minutes`. Within the baseline model, nothing was transformed in those columns. However, in our final model, we transformed both of these columns with StandardScalar to get a proper scalar value for each column and to not worry about the different units both columns have.
 
 ### Description
 
