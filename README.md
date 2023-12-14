@@ -73,6 +73,8 @@ To fix our overfitting of lower-star recipes, we could sample more of the lower-
 
 We added these features because they all have some sort of correlation with ratings. Intuitively thinking, the amount of `calories`, `sugars`, `fats`, and other nutritional values (`health_score`) determines the rating because the higher the amount of these values, the higher the rating. (The more `sugar`, `calories`, etc. the tastier it is) Additionally, the number of `steps` and `ingredients` contributes to the **rating** as people do not want long recipes or recipes that require a lot of ingredients. These values also contribute to the time that a recipe takes, as well as its perceived level of difficulty. The value of time, replicability, and quality greatly contribute to **ratings**. All of these analyses are explored in our previous project which you can find [here](https://keenans04.github.io/RecipesAndRatings/)!
 
+We believe these features greatly boost our model's performance based on the above reasoning. The EDA and intuitive, logical thinking present the case that each parameter helps with the prediction of the rating. Also, any addition of a parameter will help the classifier predict the rating.
+
 #### Improved Baseline Model Features
 
 For the baseline model, we only had two features: `calories` and `minutes`. Within the baseline model, nothing was transformed in those columns. However, in our final model, we transformed both of these columns with StandardScalar to get a proper scalar value for each column and to not worry about the different units both columns have.
@@ -104,9 +106,15 @@ As you can see from the confusion matrix, there are a lot of zeroes and a column
 ### Description
 Our group asks the question, “Does our final model perform better for recipes of low ratings (1, 2) than it does for higher ratings (3, 4, 5)? To simulate this, we will be applying a permutation test where we shuffle both groups x and y. Our evaluation metric will be an F-1 Score because we want to learn more about how our model identifies, classifies, overrates, and underrates low and high-rated recipes, providing a nuanced understanding of its performance across different rating categories.
 
-**Null Hypothesis**: Our model is fair. Its precision for low ratings and high ratings are roughly the same, and any differences are due to random chance.
+**Group X**: The low ratings of our dataset, ratings 1 and 2.
 
-**Alternate Hypothesis**: Our model is unfair. Its precision for low ratings is lower than for high ratings
+**Group Y**: The high ratings of our dataset, ratings 3, 4, 5.
+
+**Evaluation Metric** F-1 Score
+
+**Null Hypothesis**: Our model is fair. Its F-1 Score for low ratings and high ratings are roughly the same, and any differences are due to random chance.
+
+**Alternate Hypothesis**: Our model is unfair. Its F-1 Score for low ratings is lower than for high ratings
 
 **Test Statistic**: Difference in F-1 score between high and low rated recipes
 
