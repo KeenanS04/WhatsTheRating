@@ -71,7 +71,7 @@ To fix our overfitting of lower-star recipes, we could sample more of the lower-
  
 #### Rationale
 
-We added these features because they all have some sort of correlate with ratings. Intuitively thinking about it, the amount of `calories`, `sugars`, `fats`, and other nutritional values `(health_score)` determines the rating because the higher the amount of these values, the higher the rating. (The more `sugar`, `calories`, etc. the tastier it is) Additionally, the number of `steps` and `ingredients` contributes to the **rating** as people do not want long recipes or recipes that require a lot of ingredients. These values also contribute to the time and ease a recipe takes. The value of time, replicability, and quality greatly contribute to **ratings**. All of these analyses are explored in our previous project which you can find [here](https://keenans04.github.io/RecipesAndRatings/)!
+We added these features because they all have some sort of correlation with ratings. Intuitively thinking, the amount of `calories`, `sugars`, `fats`, and other nutritional values (`health_score`) determines the rating because the higher the amount of these values, the higher the rating. (The more `sugar`, `calories`, etc. the tastier it is) Additionally, the number of `steps` and `ingredients` contributes to the **rating** as people do not want long recipes or recipes that require a lot of ingredients. These values also contribute to the time that a recipe takes, as well as its perceived level of difficulty. The value of time, replicability, and quality greatly contribute to **ratings**. All of these analyses are explored in our previous project which you can find [here](https://keenans04.github.io/RecipesAndRatings/)!
 
 #### Improved Baseline Model Features
 
