@@ -53,14 +53,23 @@ To fix our overfitting of lower-star recipes, we could sample more of the lower-
 
 ### Features Added 
 
-* `health_score`: This column is engineered from the original nutrition column. It contains the weighted sum of `calories`, `total_fat`, `sugar`, `sodium`, `protein`, `saturated_fat`
-* *
-* `n_ingredients`:
-* `n_steps`:
-* `is_short`:
-* `is_long`:
+* `health_score`: This column is engineered from the original nutrition column. It contains the weighted sum of `calories`, `total_fat`, `sugar`, `sodium`, `protein`, and `saturated_fat`.
+  * Feature Type: Quantitative Continuous
+  * Column Transformation: StandardScalar to make sure all columns have the right     scalar value. We also would not have to worry about the units for each quantitative column.
+* `n_ingredients`: An original column in the recipes dataset that contained the number of **ingredients**
+  * Feature Type: Quantitative Discrete
+  * Column Transformation: StandardScalar to make sure all columns have the right     scalar value. We also would not have to worry about the units for each quantitative column.
+* `n_steps`: An original column in the recipes dataset that contained the number of **steps**
+  * Feature Type: Quantitative Discrete
+  * Column Transformation: StandardScalar to make sure all columns have the right     scalar value. We also would not have to worry about the units for each quantitative column.
+* `is_short`: This column is engineered from the tags column in our original recipes dataset. The tag of **thirty mins or less** was used to see which recipes were quick to make. We assigned boolean values for each recipe based on this tag.
+  * Feature Type: Categorical 
+  * Column Transformation: One hot encoding to make the categorical variables understandable numerically. Also, one hot encoding helps our classifier determine the correlation between recipes that take 30 mins or less and rating.
+* `is_long`: This column is engineered from the tags column in our original recipes dataset. The tag of **easy** was used to see which recipes were easy to make, had fewer steps, and fewer ingredients. We assigned boolean values for each recipe based on this tag.
+  * Feature Type: Categorical
+  * Column Transformation: One hot encoding to make the categorical variables understandable numerically. Also, one hot encoding helps our classifier determine the correlation between easy recipes and ratings.
 
-We added these features because they all have a 
+We added these features because they all correlate with ratings. Intuitively thinking about it, the amount of calories, sugars, fats, and other nutritional values determines the rating because the higher the amount of these values, the higher the rating. (more sugars calories the tastier it is)
 
 ### Description
 
